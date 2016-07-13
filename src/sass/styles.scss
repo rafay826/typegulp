@@ -1,0 +1,16 @@
+//Global
+@import "partials/variables";
+@import "partials/fonts";
+//--Styles
+.heading {
+    text-align: center;
+    color: $h1_color;
+}
+
+.form-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    left: 50%;
+    width: 75%;
+}
