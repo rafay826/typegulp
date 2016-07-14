@@ -25,7 +25,9 @@
         watchify,
         tsify,
         gutil,
-        stream;
+        stream,
+        mainTS,
+        bundleJS;
 
     var gulp = require("gulp");
     var browserify = require("browserify");
@@ -55,6 +57,11 @@
     var distMinJs = 'dist/js/final.min.js';
     var distJs = 'dist/js';
     var controllerJs = 'controller/*.js';
+    
+    // main typescript location
+    var mainTS = 'src/main.ts';
+    // bundle.js name
+    var bundleJS = 'bundle.js';
 
     // Include Our Plugins
     var gulp = require('gulp');
@@ -116,7 +123,7 @@
     var watchedBrowserify = watchify(browserify({
         basedir: '.',
         debug: true,
-        entries: ['src/main.ts'],
+        entries: [mainTS],
         cache: {},
         packageCache: {}
     }).plugin(tsify));
@@ -125,7 +132,7 @@
         return watchedBrowserify
             .transform("babelify")
             .bundle()
-            .pipe(source('bundle.js'))
+            .pipe(source(bundleJS))
             .pipe(buffer())
             .pipe(sourcemaps.init({loadMaps: true}))
             .pipe(sourcemaps.write('./'))
