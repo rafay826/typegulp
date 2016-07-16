@@ -1,8 +1,11 @@
-import { sayHello } from "./greet";
+import {Component} from 'angular2/core';
+import {bootstrap} from 'angular2/platform/browser';
 
-function showHello(divName: string, name: string) {
-    const elt = document.getElementById(divName);
-    elt.innerText = sayHello(name);
+@Component({
+    selector: 'jumanji',
+    template: '<h1>Jumanji Library</h1>'
+})
+
+export class AppComponent {
+    
 }
-
-showHello("greeting", "IT'S DEFINITELY WORKING!!! WOOOOHOOOOOO");
